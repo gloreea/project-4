@@ -15,6 +15,31 @@ _________________
 Wireframes
 ![wireframe](Vibefest.png)
 
+RESTful Routing Chart
+| HTTP Method | Route                          | Description                                           |
+|:----------- |:------------------------------ |:----------------------------------------------------- |
+| POST        | /users/register                | Create a new user account                             |
+| POST        | /users/login                   | Authenticate and log in a user                        |
+| GET         | /users/profile                 | Get user profile info                                 |
+| PUT         | /users/profile                 | Update user profile information                       |
+|             |                                |                                                       |
+| GET         | /festivals                     | Get a list of upcoming festivals                      |
+| GET         | /festivals/:id                 | Get detailed information about a specific             |
+| GET         | /feed                          | Retrieve all posts from users for the feed/home page. |
+| POST        | /posts                         | Create a new post                                     |
+| GET         | /posts                         | Get all posts                                         |
+| GET         | /posts/:id                     | Get a specific post                                   |
+| PUT         | /posts/:id                     | Update a specific post                                |
+| DELETE      | /posts/:id                     | Delete a specific post                                |
+| POST        | /posts/:id/like                | Like a post                                           |
+| POST        | /posts/:id/comments            | Create a new comment on a post                        |
+| GET         | /posts/:id/comments            | Get all comments on a post                            |
+| DELETE      | /posts/:id/comments/:commentId | Delete a specific comment on a post                   |
+| PUT         | /posts/:id/comment/:commentId  | Update a comment                                      |
+| GET         | /recommendations               | Get personalized festival recommendations             |
+|             |                                |                                                       |
+
+
 MVP Goals
 - User Registration and Authentication: Users can create accounts, log in, and manage their profiles. (Est. Time: 1 day)
 - Festival Listings: Integrate an API (e.g., Songkick or Ticketmaster) to fetch and display upcoming festivals. (Est. Time: 1 day)
