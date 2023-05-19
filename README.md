@@ -3,11 +3,17 @@ Overview
 Vibefest is a unique social media platform designed exclusively for festival goers. With its integration of ChatGPT, the app provides personalized recommendations and suggestions to enhance the festival experience for users. Whether they're seeking information about upcoming festivals, connecting with fellow festival goers, or exploring new music genres, Festival Connect offers a seamless and engaging platform for the festival community.
 
 Technologies Used
-React Native: A framework for building native mobile applications, allowing for a smooth and intuitive user interface.
-MongoDB: A NoSQL database for efficient and scalable data storage and retrieval.
-Node.js: A server-side JavaScript runtime for building fast and scalable network applications.
-ChatGPT API: A language model API that offers AI-powered chat capabilities, enabling personalized recommendations and interactions.
+_________________
+- MongoDB: A NoSQL database for efficient and scalable data storage and retrieval.
+- Express.js: A web application framework for building robust and scalable APIs.
+- React: A JavaScript library for building user interfaces.
+- Node.js: A server-side JavaScript runtime for building fast and scalable network applications.
+- ChatGPT API: A language model API that offers AI-powered chat capabilities, enabling personalized recommendations and interactions.
 (maybe songkick api or discovery api)
+- Tailwind CSS: A utility-first CSS framework for quickly styling your application.
+
+Wireframes
+![wireframe](Vibefest.png)
 
 MVP Goals
 - User Registration and Authentication: Users can create accounts, log in, and manage their profiles. (Est. Time: 1 day)
@@ -28,38 +34,58 @@ Stretch Goals
 - Advanced Recommendation System: Enhance the festival recommendation feature by incorporating user feedback and preferences.
 
 User Stories and User Flow
-As a festival enthusiast, I want to create an account and log in to access personalized recommendations and connect with other festival goers.
-As a user, I want to explore upcoming festivals, view festival details, and bookmark my favorite events for future reference.
-As a user, I want to receive personalized festival recommendations based on my music preferences, location, and previous festival attendance.
-As a user, I want to chat and connect with other festival goers, exchange recommendations, and plan meetups during festivals.
-As a user, I want to update my profile information, manage my preferences, and customize my festival experience.
+MVP User Stories:
+
+- As a new user, I want to create an account with my email and password so that I can access the Vibefest platform.
+- As a registered user, I want to log in to my account to securely access my profile and personalized recommendations.
+- As a logged-in user, I want to view a list of upcoming festivals, including their dates and locations, so that I can explore the festival options.
+- As a festival enthusiast, I want to see detailed information about a specific festival, including the lineup and venue details.
+- As a user, I want to post my thoughts and experiences about a festival, so that I can share them with other users.
+- As a user, I want to be able to like and comment on posts made by other users, to engage in discussions and show my appreciation.
+- As a user, I want to have the ability to edit or delete my own posts if I need to make any changes.
+- As a user, I want to have a visually appealing and user-friendly interface for easy navigation and interaction.
+- As a user, I want to receive personalized festival recommendations based on my preferences and interests to discover new festivals.
+- As a user, I want to be able to update my profile information, such as my display name and profile picture, to personalize my experience on Vibefest.
+
+Stretch Goal User Stories:
+
+- As a user, I want to be able to see festivals happening near my current location, so that I can find local events easily.
+- As a user, I want to be able to share my festival experiences, photos, and recommendations with my social networks, to engage with my friends.
+- As a user, I want to have the ability to create and share my own festival events, to contribute to the festival community.
+- As a user, I want to have an advanced search functionality to find festivals based on specific criteria, such as genre, location, or date.
+- As a user, I want to receive push notifications for important updates, new festival announcements, or messages from other users.
+- As a user, I want to have the ability to connect and communicate with other festival-goers through private messages or group chats.
+- As a user, I want the festival recommendation system to improve over time based on my feedback and preferences.
 
 Schedule
 Day 1: Learning and Set Up
-    -Learn the basics of React Native (tutorials, documentation, online resources).
-    -Set up your development environment (install necessary tools and dependencies).
-    -Create a new React Native project for your app.
-    -Familiarize yourself with the project structure and essential concepts.
+    - Set up development environment (install necessary tools and dependencies).
+    - Create a new MERN project for app.
+    - Git familiarized with the project structure and essential concepts.
 
 Day 2: User Authentication and Profile
-    -Implement user registration and login functionality.
-    -Create user profiles with basic information (name, profile picture).
-    -Allow users to edit and update their profile information.
+    - Implement user registration and login functionality.
+    - Create user profiles with basic information (name, profile picture).
+    - Allow users to edit and update their profile information.
 
 Day 3: Festival Listings and Recommendations
-    -Integrate an API (such as Songkick or Ticketmaster) to fetch festival event data.
-    -Display a list of upcoming festivals with relevant details (date, location, lineup).
+    - Integrate an API (such as Songkick or Ticketmaster) to fetch festival event data.
+    - Display a list of upcoming festivals with relevant details (date, location, lineup).
     -Implement a recommendation system using the ChatGPT API to suggest festivals based on user preferences (music genre, location, past interests).
 
-Day 4: Social Features
-    -Implement a feed or timeline where users can post and share content related to festivals.
-    -Enable users to like, comment on, and share posts from other users.
-    -Implement basic CRUD (Create, Read, Update, Delete) functionality for posts.
+Day 4: Social Features and Tailwind CSS
 
-Day 5: User Interactions
-    -Allow users to follow or connect with other festival-goers.
-    -Implement a messaging system or chat feature for direct communication between users.
-    -Enable users to discover and join groups or communities centered around specific festivals or interests.
+    - Implement a feed or timeline where users can post and share content related to festivals.
+    - Enable users to like, comment on, and share posts from other users.
+    - Implement basic CRUD (Create, Read, Update, Delete) functionality for posts.
+    - Learn Tailwind CSS (tutorials, documentation, online resources) to understand its principles and usage.
+
+Day 5: User Interactions and Tailwind CSS Integration
+
+    - Allow users to follow or connect with other festival-goers.
+    - Implement a messaging system or chat feature for direct communication between users.
+    - Enable users to discover and join groups or communities centered around specific festivals or interests.
+    - Incorporate Tailwind CSS into your project, applying its utility classes to enhance the visuals and responsiveness.
 
 Day 6: Cleaning and Testing  
     -Refine the user interface and improve the app's visual appeal.
