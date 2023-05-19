@@ -15,6 +15,9 @@ _________________
 Wireframes
 ![wireframe](Vibefest.png)
 
+ERD
+![ERD](ERD.png)
+
 RESTful Routing Chart
 | HTTP Method | Route                          | Description                                           |
 |:----------- |:------------------------------ |:----------------------------------------------------- |
