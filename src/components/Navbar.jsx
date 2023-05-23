@@ -11,6 +11,15 @@ export default function Navbar({ currentUser, handleLogout }) {
 			<Link to="/profile">
 				profile
 			</Link>
+			<Link to="/home">
+				feed
+			</Link>
+			<Link to="/festivals">
+				festivals
+			</Link>
+			<Link to="/recommendations">
+				recommendations
+			</Link>
 		</>
 	)
 

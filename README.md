@@ -121,7 +121,7 @@ Day 6: Cleaning and Testing
     -Prepare and finalize MVP.
 
 Potential Roadblocks
-- Learning Curve: Adjustment to a new framework, React Native might cause challenges in grasping concepts and best precatices.
+- Allowing posts to have likes and comments may be a potential roadblock.
 - API Integration: Integrating external APIs, such as the ChatGPT API and festival event data API, might be difficult to implement and need sufficient time for testing and debugging, also time for undertsnading API documentation.
 - Data Modeling: Designing the data model using MongoDB might require careful consideration. Defining the relationships between entities, ensuring data consistency can be complex and time-consuming. Also, creating the correct relationships between models.
 - User Experience Design: Ensuring smooth navigation, responsiveness, and a cohesive design can require additional attention and iteration, must take into account everytime something new is added.
