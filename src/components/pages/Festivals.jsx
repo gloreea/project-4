@@ -23,7 +23,10 @@ export default function Festivals(){
     fetchFestivals()
     }, [search])
     const handleSearch = (event) => {
-        setSearch(event.target.value);
+        setSearch(event.target.value)
+      }
+      const openTicketmasterPage = (url) => {
+        window.open(url, '_blank')
       }
     return (
         <div>
@@ -35,6 +38,7 @@ export default function Festivals(){
                     <p>Date: {festival.dates.start.localDate}</p>
                     <p>Location: {festival._embedded.venues[0]?.name}</p>
                     <img src={festival.images[0]?.url} alt={festival.name} />
+                    <button onClick={() => openTicketmasterPage(festival.url)}>More Info</button>
         </div>
       ))}
     </div>
