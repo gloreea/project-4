@@ -211,7 +211,7 @@ export default function HomeFeedPage({ currentUser }) {
               <div key={comment._id}>
                 <p>{comment.content}</p>
                 <p>{comment.userId}</p>
-                <p>{comment.createdAt}</p>
+                <p>{comment.createdAt ? new Date(comment.createdAt).toLocaleString() : ''}</p>
               </div>
             )) : <p> No comments yet</p>}
             </div>
