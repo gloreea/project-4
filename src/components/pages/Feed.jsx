@@ -30,6 +30,7 @@ export default function HomeFeedPage({ currentUser }) {
           'Authorization': token
         }
       })
+      // newest posts are first and old posts at bottom
       const reversedPosts = response.data.posts.reverse()
       console.log(token)
       console.log(response.data)
@@ -39,44 +40,34 @@ export default function HomeFeedPage({ currentUser }) {
       console.log(error)
     }
   }
+  // show and hide comments functionality (bug where the state of all buttons change)
   const handleToggleComments = async (postId) => {
     const updatedPosts = posts.map((post) => {
       if (post._id === postId) {
         if (showComments) {
-          // Clear comments when hiding them
+          // clear comments when hiding them
           return { ...post, comments: [] }
         }
         return post
       }
       return post
-    // console.log('handleToggleComments called')
-    // setShowCommentsPost((prevMap) => {
-    //   const newState = { ...prevMap }
-    //   newState[postId] = !newState[postId]
-    //   if (!newState[postId]) {
-    //     // Clear comments when hiding them
-    //     setPosts((prevPosts) =>
-    //       prevPosts.map((post) =>
-    //         post._id === postId ? { ...post, comments: [] } : post
-    //       )
-    //     )
-    //   }
-    //   return newState
+   
   })
   setPosts(updatedPosts)
     setShowComments(!showComments)
     if (!showComments) {
-      // Fetch comments only when showing comments
+      // fetch comments only when showing comments
       await fetchComments(postId)
     }
     // fetchComments(postId)
     
   } 
+  // showing the create comment form and hiding when comment button is clicked for a specific post(buggy a bit)
   const toggleCommentForm = (postId) => {
     setShowCommentForm(!showCommentForm)
     setSelectedPostId(postId)
   }
-  
+  // get all comments for a specific post and show all comments for that posts 
   const fetchComments = async (postId) => {
     try {
       const token = localStorage.getItem('jwt')
@@ -88,8 +79,10 @@ export default function HomeFeedPage({ currentUser }) {
       console.log(response.data.post, "hi")
       console.log(posts)
       console.log(postId)
+      
+      // comments from post 
       const comments = response.data.post.comments
-
+      // update posts to contain comments now
       const updatedPosts = posts.map((post) => {
         if (post._id === postId) {
           console.log("string", post, comments)
@@ -108,6 +101,7 @@ export default function HomeFeedPage({ currentUser }) {
       console.log(error)
     }
   }
+  // create a post and save it to post db and refresh feed page(await fetch posts not working correctly)
   const handleCreatePost = async () => {
     try {
         const token = localStorage.getItem('jwt')
@@ -128,7 +122,7 @@ export default function HomeFeedPage({ currentUser }) {
         console.log(error)
       }
     }
-
+    // hidden edit post form that shows when edit is clicked, and allows you to update the post
     const handleEditPost = async (postId, content) => {
         try {
             console.log(content)
@@ -146,6 +140,7 @@ export default function HomeFeedPage({ currentUser }) {
           console.log(error)
         }
     }
+    // delete button function for post 
     const handleDeletePost = async (postId) => {
         try {
             const token = localStorage.getItem('jwt')
@@ -189,16 +184,15 @@ export default function HomeFeedPage({ currentUser }) {
     <h1 className="text-2xl font-bold mb-4">Home Feed</h1>
     <button
       className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-      onClick={() => setShowCreatePostForm(true)}
-    >
+      onClick={() => setShowCreatePostForm(true)}>
       Create Post
     </button>
-  {showCreatePostForm && (
-    <CreatePostForm currentUser={currentUser} setPosts={handleCreatePost} />
-  )}
-  <div className="mt-8 w-1/3">
-  {posts.map((post) => (
-    <div key={post._id} className="bg-white p-8  shadow mb-4 h-100 rounded">
+    {showCreatePostForm && (
+      <CreatePostForm currentUser={currentUser} setPosts={handleCreatePost} />
+     )}
+     <div className="mt-8 w-1/3">
+    {posts.map((post) => (
+      <div key={post._id} className="bg-white p-8  shadow mb-4 h-100 rounded">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center">
           <div className="w-8 h-8 rounded-full bg-gray-300 mr-2"></div>
@@ -223,49 +217,39 @@ export default function HomeFeedPage({ currentUser }) {
           <h3 className="text-lg font-bold mb-2">{post.festival}</h3>
           <p>{post.content}</p>
           <div className="flex items-center justify-between mt-4">
-        </div>
+           </div>
             <div className="flex items-center justify-between  mt-10">
             <div>
-
             <button className="bg-white-500 hover:bg-red-200 text-white font-semibold py-2 px-4 rounded " >
-            <FontAwesomeIcon icon={ faHeart }  style={{color: "#e60000",}} className="mr-2" />
-              
-            </button>
+            <FontAwesomeIcon icon={ faHeart }  style={{color: "#e60000",}} className="mr-2" /></button>
             </div>
             <div className="flex">
-
               <button
                 className="bg-white-500 hover:bg-blue-400 text-white font-semibold py-3 px-7 rounded ml-3"
-                onClick={() => toggleCommentForm(post._id)}
-                >
+                onClick={() => toggleCommentForm(post._id)} >
                    <FontAwesomeIcon icon={faComment} style={{color:"#333c4d"}}className="ml-5" />
-                
               </button>
             </div>
               <button
                 className="text-blue-500 hover:text-blue-600 font-semibold"
-                onClick={() => handleToggleComments(post._id)}
-                >
+                onClick={() => handleToggleComments(post._id)}>
                 {showComments ? 'Hide Comments' : 'Show Comments'}
               </button>
             </div>
             {showCommentForm && selectedPostId === post._id && (
               <CreateCommentForm postId={post._id} currentUser={currentUser} />
               )}
-          {/* </div> */}
           {currentUser && currentUser._id === post.userId._id && (
             <div className="mt-4">
               <button
                 className="bg-green-300 hover:bg-blue-600 text-white font-semibold py-2 px-3 rounded-sm mr-2"
-                onClick={() => setEditingPostId(post._id)}
-                >
+                onClick={() => setEditingPostId(post._id)}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 Edit
               </button>
               <button
                 className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 rounded-sm"
-                onClick={() => handleDeletePost(post._id)}
-                >
+                onClick={() => handleDeletePost(post._id)}>
                 Delete
               </button>
             </div>
@@ -277,14 +261,11 @@ export default function HomeFeedPage({ currentUser }) {
                   <div className="w-8 h-8 rounded-full bg-gray-300 mr-2"></div>
                   <div className="flex-grow">
                     <p>{comment.content}</p>
-                    {/* <p className="text-gray-500 text-sm">
-                      {comment.userId}
-                    </p> */}
                   </div>
                   <p className="text-gray-500 text-sm">
                     {comment.createdAt
                       ? new Date(comment.createdAt).toLocaleString()
-                      : ""}
+                      : ""} {/*  change format of created at */}
                   </p>
                 </div>
               ))}

@@ -1,5 +1,7 @@
-Vibefest
+                                        Vibefest
+
 Overview
+________________
 Vibefest is a unique social media platform designed exclusively for festival goers. With its integration of ChatGPT, the app provides personalized recommendations and suggestions to enhance the festival experience for users. Whether they're seeking information about upcoming festivals, connecting with fellow festival goers, or exploring new music genres, Festival Connect offers a seamless and engaging platform for the festival community.
 
 Technologies Used
@@ -9,7 +11,7 @@ _________________
 - React: A JavaScript library for building user interfaces.
 - Node.js: A server-side JavaScript runtime for building fast and scalable network applications.
 - ChatGPT API: A language model API that offers AI-powered chat capabilities, enabling personalized recommendations and interactions.
-(maybe songkick api or discovery api)
+- Ticketmaster Discovery API
 - Tailwind CSS: A utility-first CSS framework for quickly styling your application.
 
 Wireframes
@@ -47,7 +49,7 @@ MVP Goals
 - User Registration and Authentication: Users can create accounts, log in, and manage their profiles. (Est. Time: 1 day)
 - Festival Listings: Integrate an API (e.g., Songkick or Ticketmaster) to fetch and display upcoming festivals. (Est. Time: 1 day)
 - Personalized Recommendations: Utilize the ChatGPT API to provide users with personalized festival recommendations based on their preferences and interests. (Est. Time: 2 days)
-- Social Features: Enable users to post, like, comment on, and share content related to festivals.
+- Social Features: Enable users to post/share, like, and comment.
 - Basic CRUD Functionality: Implement create, read, update, and delete operations for user posts.
 - User Interface: Design an intuitive and visually appealing interface for seamless navigation and interaction. (Est. Time: 1 day)
 
@@ -69,7 +71,7 @@ MVP User Stories:
 - As a logged-in user, I want to view a list of upcoming festivals, including their dates and locations, so that I can explore the festival options.
 - As a festival enthusiast, I want to see detailed information about a specific festival, including the lineup and venue details.
 - As a user, I want to post my thoughts and experiences about a festival, so that I can share them with other users.
-- As a user, I want to be able to like and comment on posts made by other users, to engage in discussions and show my appreciation.
+- As a user, I want to be able to comment on posts made by other users.
 - As a user, I want to have the ability to edit or delete my own posts if I need to make any changes.
 - As a user, I want to have a visually appealing and user-friendly interface for easy navigation and interaction.
 - As a user, I want to receive personalized festival recommendations based on my preferences and interests to discover new festivals.
@@ -88,37 +90,41 @@ Stretch Goal User Stories:
 Schedule
 Day 1: Learning and Set Up
     - Set up development environment (install necessary tools and dependencies).
-    - Create a new MERN project for app.
-    - Git familiarized with the project structure and essential concepts.
+    - Create a new MERN project for app(git repos).
+    - Get familiarized with the project structure.
 
 Day 2: User Authentication and Profile
     - Implement user registration and login functionality.
-    - Create user profiles with basic information (name, profile picture).
-    - Allow users to edit and update their profile information.
+    - Create user profiles with basic information (name, profile picture?).
 
 Day 3: Festival Listings and Recommendations
     - Integrate an API (such as Songkick or Ticketmaster) to fetch festival event data.
     - Display a list of upcoming festivals with relevant details (date, location, lineup).
-    -Implement a recommendation system using the ChatGPT API to suggest festivals based on user preferences (music genre, location, past interests).
+    -Implement a recommendation system using the ChatGPT API to suggest festivals based on user preferences (music genre).
 
 Day 4: Social Features and Tailwind CSS
-
     - Implement a feed or timeline where users can post and share content related to festivals.
-    - Enable users to like, comment on, and share posts from other users.
-    - Implement basic CRUD (Create, Read, Update, Delete) functionality for posts.
-    - Learn Tailwind CSS (tutorials, documentation, online resources) to understand its principles and usage.
+    - Enable users to comment on posts from other users.
+    - Implement basic CRUD functionality for posts.
+    - Learn Tailwind CSS (tutorials, documentation, online resources) to understand its usage.
 
 Day 5: User Interactions and Tailwind CSS Integration
-
-    - Allow users to follow or connect with other festival-goers.
-    - Implement a messaging system or chat feature for direct communication between users.
-    - Enable users to discover and join groups or communities centered around specific festivals or interests.
     - Incorporate Tailwind CSS into your project, applying its utility classes to enhance the visuals and responsiveness.
 
 Day 6: Cleaning and Testing  
     -Refine the user interface and improve the app's visual appeal.
-    -Perform thorough testing and bug fixing.
+    -Perform testing and bug fixing.
     -Prepare and finalize MVP.
+
+
+Future:
+    - Enable users to discover and join groups or communities centered around specific festivals or interests.
+    - Implement a messaging system or chat feature for direct communication between users.
+    - Enable users to like posts and/or comments.
+    - Add profile customization such as profile picture, edit password, or emai.
+    - Add a faves festival for users.
+    - Allow users to follow or connect with other festival-goers.
+    - Geolocation
 
 Potential Roadblocks
 - Allowing posts to have likes and comments may be a potential roadblock.

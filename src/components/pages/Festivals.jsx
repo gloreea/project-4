@@ -10,8 +10,10 @@ export default function Festivals(){
         const fetchFestivals = async () => {
         console.log(process.env.API_KEY) 
             try {
+                // search through events US
             const api_key = process.env.REACT_APP_TICKETMASTER_API_KEY
             const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${encodeURIComponent(search)},festival&classificationName=music&countryCode=US&apikey=${api_key}`)
+            // results from fetch url
             const data = await response.json()
             const festivalsData = data._embedded?.events
             if (festivalsData) {
@@ -24,12 +26,15 @@ export default function Festivals(){
     
     fetchFestivals()
     }, [search])
+
+    // use user input to search 
     const handleSearch = (event) => {
         setSearch(event.target.value)
-      }
-      const openTicketmasterPage = (url) => {
+    }
+      // open ticket link for festival in another tab
+    const openTicketmasterPage = (url) => {
         window.open(url, '_blank')
-      }
+    }
     return (
             <div className="bg-gray-100 bg-gradient-to-b from-blue-200 to-purple-200 min-h-screen py-8">
             <div className="container mx-auto">
