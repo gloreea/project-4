@@ -15,6 +15,7 @@ import Festivals from './components/pages/Festivals'
 import Recommendations from './components/pages/Recommendations'
 import HomeFeedPage from './components/pages/Feed'
 
+
 function App() {
 	// the currently logged in user will be stored up here in state
 	const [currentUser, setCurrentUser] = useState(null)

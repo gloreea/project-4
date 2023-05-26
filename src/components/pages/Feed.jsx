@@ -3,6 +3,8 @@ import React from "react"
 import CreatePostForm from '../PostForm'
 import axios from 'axios'
 import CreateCommentForm from '../CommentForm'
+import { faComment, faHeart, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function HomeFeedPage({ currentUser }) {
   const [posts, setPosts] = useState([])
@@ -12,10 +14,11 @@ export default function HomeFeedPage({ currentUser }) {
   const [showCommentForm, setShowCommentForm] = useState(false)
   const [selectedPostId, setSelectedPostId] = useState('')
   const [showComments, setShowComments] = useState(false)
-  // const [comments, setComments] = useState([])
+  // const [showCommentsPost, setShowCommentsPost] = useState([])
+ 
 
   useEffect(() => {
-    const token = localStorage.getItem('jwt')
+    // const token = localStorage.getItem('jwt')
     fetchPosts()
   }, [])
   
@@ -27,18 +30,46 @@ export default function HomeFeedPage({ currentUser }) {
           'Authorization': token
         }
       })
-      // setComments([])
+      const reversedPosts = response.data.posts.reverse()
       console.log(token)
       console.log(response.data)
-      setPosts(response.data.posts)
+      // setPosts(response.data.posts)
+      setPosts(reversedPosts)
     } catch (error) {
       console.log(error)
     }
   }
-  const handleToggleComments = (postId) => {
-    console.log('handleToggleComments called')
+  const handleToggleComments = async (postId) => {
+    const updatedPosts = posts.map((post) => {
+      if (post._id === postId) {
+        if (showComments) {
+          // Clear comments when hiding them
+          return { ...post, comments: [] }
+        }
+        return post
+      }
+      return post
+    // console.log('handleToggleComments called')
+    // setShowCommentsPost((prevMap) => {
+    //   const newState = { ...prevMap }
+    //   newState[postId] = !newState[postId]
+    //   if (!newState[postId]) {
+    //     // Clear comments when hiding them
+    //     setPosts((prevPosts) =>
+    //       prevPosts.map((post) =>
+    //         post._id === postId ? { ...post, comments: [] } : post
+    //       )
+    //     )
+    //   }
+    //   return newState
+  })
+  setPosts(updatedPosts)
     setShowComments(!showComments)
-    fetchComments(postId)
+    if (!showComments) {
+      // Fetch comments only when showing comments
+      await fetchComments(postId)
+    }
+    // fetchComments(postId)
     
   } 
   const toggleCommentForm = (postId) => {
@@ -129,95 +160,147 @@ export default function HomeFeedPage({ currentUser }) {
         }
       }
     
-    const handleCreateComment = async (postId, commentContent) => {
-        try {
+    // const handleCreateComment = async (postId, commentContent) => {
+    //     try {
          
-          console.log('Comment Content:', commentContent)
-          console.log('Current User Name:', currentUser?.name)
-          const token = localStorage.getItem('jwt')
-          const commentData = {
-            content: commentContent
-          }
-          console.log(postId, "lol")
-          await axios.post(
-            `http://localhost:8000/api-v1/home/${postId._id}/comments`,commentData,
-            {
-              headers: {
-                Authorization: token,
-              },
-            }
-          )
-          await fetchPosts()
-        } catch (error) {
-          console.log(error)
-        }
-      }
+    //       console.log('Comment Content:', commentContent)
+    //       console.log('Current User Name:', currentUser?.name)
+    //       const token = localStorage.getItem('jwt')
+    //       const commentData = {
+    //         content: commentContent
+    //       }
+    //       console.log(postId, "lol")
+    //       await axios.post(
+    //         `http://localhost:8000/api-v1/home/${postId._id}/comments`,commentData,
+    //         {
+    //           headers: {
+    //             Authorization: token,
+    //           },
+    //         }
+    //       )
+    //       await fetchPosts()
+    //     } catch (error) {
+    //       console.log(error)
+    //     }
+    //   }
 
   return (
-    <div>
-      <h1>Home Feed</h1>
-      <button onClick={() => setShowCreatePostForm(true)}>Create Post</button>
-      {showCreatePostForm && (
-        <CreatePostForm currentUser={currentUser} setPosts={handleCreatePost} />
-      )}
-      {posts.map((post) => (
-        <div key={post._id} style={{ marginBottom: '20px' }}>
-          {editingPostId === post._id ? (
+    <div className="bg-gradient-to-b from-blue-200 to-purple-200 min-h-screen flex flex-col items-center">
+    <h1 className="text-2xl font-bold mb-4">Home Feed</h1>
+    <button
+      className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+      onClick={() => setShowCreatePostForm(true)}
+    >
+      Create Post
+    </button>
+  {showCreatePostForm && (
+    <CreatePostForm currentUser={currentUser} setPosts={handleCreatePost} />
+  )}
+  <div className="mt-8 w-1/3">
+  {posts.map((post) => (
+    <div key={post._id} className="bg-white p-8  shadow mb-4 h-100 rounded">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center">
+          <div className="w-8 h-8 rounded-full bg-gray-300 mr-2"></div>
           <div>
+            <strong className="text-lg">{post.userId && post.userId.name && post.userId.name.toString()}</strong>
+          </div>
+        </div>
+        <p className="text-gray-500 text-sm">{new Date(post.createdAt).toLocaleString()}</p>
+      </div>
+      {editingPostId === post._id ? (
+        <div>
           <input
             type="text"
             value={editedContent}
+            placeholder="edit post..."
             onChange={(e) => setEditedContent(e.target.value)}
-          />
+            />
           <button onClick={() => handleEditPost(post._id, editedContent)}>Save</button>
         </div>
       ) : (
-          <>
-            <div>
-              <strong>User:</strong> {post.userId && post.userId.name && post.userId.name.toString()}
-            </div>
-            <div>
-                <strong>Festival:</strong> {post.festival}
-            </div>
-            <div>
-                <strong>Content:</strong> {post.content}
-            </div>
-            <div>
-              <button>Like</button>
-
-              <button onClick={() => toggleCommentForm(post._id)}>Comment</button>
-              {showCommentForm && selectedPostId === post._id && (
-                <CreateCommentForm
-                  postId={post._id}
-                  currentUser={currentUser}
-                />
-              )}
-            </div>
-          </>
-      )}
-          {currentUser && currentUser._id === post.userId._id &&  (
-          <div>
-            <button onClick={() => setEditingPostId(post._id)}>Edit</button>
-            <button onClick={() => handleDeletePost(post._id)}>Delete</button>
-          </div>
-        )}
-        <div>
-          <button onClick={() => handleToggleComments(post._id)}>
-            {showComments ? 'Hide Comments' : 'Show Comments'}
-          </button>
-          
-          <div>
-            {post.comments ? post.comments.map((comment) => (
-              <div key={comment._id}>
-                <p>{comment.content}</p>
-                <p>{comment.userId}</p>
-                <p>{comment.createdAt ? new Date(comment.createdAt).toLocaleString() : ''}</p>
-              </div>
-            )) : <p> No comments yet</p>}
-            </div>
-          </div>
+        <>
+          <h3 className="text-lg font-bold mb-2">{post.festival}</h3>
+          <p>{post.content}</p>
+          <div className="flex items-center justify-between mt-4">
         </div>
-      ))}
+            <div className="flex items-center justify-between  mt-10">
+            <div>
+
+            <button className="bg-white-500 hover:bg-red-200 text-white font-semibold py-2 px-4 rounded " >
+            <FontAwesomeIcon icon={ faHeart }  style={{color: "#e60000",}} className="mr-2" />
+              
+            </button>
+            </div>
+            <div className="flex">
+
+              <button
+                className="bg-white-500 hover:bg-blue-400 text-white font-semibold py-3 px-7 rounded ml-3"
+                onClick={() => toggleCommentForm(post._id)}
+                >
+                   <FontAwesomeIcon icon={faComment} style={{color:"#333c4d"}}className="ml-5" />
+                
+              </button>
+            </div>
+              <button
+                className="text-blue-500 hover:text-blue-600 font-semibold"
+                onClick={() => handleToggleComments(post._id)}
+                >
+                {showComments ? 'Hide Comments' : 'Show Comments'}
+              </button>
+            </div>
+            {showCommentForm && selectedPostId === post._id && (
+              <CreateCommentForm postId={post._id} currentUser={currentUser} />
+              )}
+          {/* </div> */}
+          {currentUser && currentUser._id === post.userId._id && (
+            <div className="mt-4">
+              <button
+                className="bg-green-300 hover:bg-blue-600 text-white font-semibold py-2 px-3 rounded-sm mr-2"
+                onClick={() => setEditingPostId(post._id)}
+                >
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                Edit
+              </button>
+              <button
+                className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-3 rounded-sm"
+                onClick={() => handleDeletePost(post._id)}
+                >
+                Delete
+              </button>
+            </div>
+          )}
+          {post.comments && post.comments.length > 0 && showComments && (
+            <div className="mt-4">
+              {post.comments.map((comment) => (
+                <div key={comment._id} className="bg-gray-100 p-2 mt-2 rounded flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-gray-300 mr-2"></div>
+                  <div className="flex-grow">
+                    <p>{comment.content}</p>
+                    {/* <p className="text-gray-500 text-sm">
+                      {comment.userId}
+                    </p> */}
+                  </div>
+                  <p className="text-gray-500 text-sm">
+                    {comment.createdAt
+                      ? new Date(comment.createdAt).toLocaleString()
+                      : ""}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          {!post.comments || post.comments.length === 0 && (
+            <p className="mt-4"></p>
+            )}
+        </>
+      )}
     </div>
-  )
-}
+  ))}
+  </div>
+</div>
+
+  
+    )
+  }
+

@@ -46,32 +46,45 @@ export default function Login({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div>
-			<h1>Login to Your Account:</h1>
-
-			<p>{msg}</p>
-
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='email'>Email:</label>
-				<input 
-					type="email"
-					id="email"
-					placeholder='your email...'
-					onChange={e => setEmail(e.target.value)}
-					value={email}
-				/>
-
-				<label htmlFor='password'>Password:</label>
-				<input 
-					type="password"
-					id="password"
-					placeholder='password...'
-					onChange={e => setPassword(e.target.value)}
-					value={password}
-				/>
-
-				<button type="submit">Login</button>
-			</form>
-		</div>
+        <div className="bg-gradient-to-b from-purple-200 to-blue-200 min-h-screen flex items-center justify-center">
+        <div className="bg-white p-8 rounded shadow-md">
+          <h1 className="text-3xl font-bold mb-6">Login to Your Account:</h1>
+          <p className="text-red-500 mb-4">{msg}</p>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label htmlFor="email" className="text-lg font-semibold">
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Your email..."
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:border-blue-500"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="password" className="text-lg font-semibold">
+                Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password..."
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                className="w-full px-4 py-2 rounded border border-gray-300 focus:border-blue-500"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
 	)
 }

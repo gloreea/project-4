@@ -1,0 +1,20 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links {
+    display: flex;
+  }
+.navbar-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-right: 1rem;
+}
+.navbar-links-right {
+    display: flex;
+    align-items: center;
+}
