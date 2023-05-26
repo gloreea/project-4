@@ -40,6 +40,7 @@ export default function HomeFeedPage({ currentUser }) {
       console.log(error)
     }
   }
+
   // show and hide comments functionality (bug where the state of all buttons change)
   const handleToggleComments = async (postId) => {
     const updatedPosts = posts.map((post) => {
@@ -52,8 +53,8 @@ export default function HomeFeedPage({ currentUser }) {
       }
       return post
    
-  })
-  setPosts(updatedPosts)
+    })
+    setPosts(updatedPosts)
     setShowComments(!showComments)
     if (!showComments) {
       // fetch comments only when showing comments
@@ -154,30 +155,6 @@ export default function HomeFeedPage({ currentUser }) {
           console.log(error)
         }
       }
-    
-    // const handleCreateComment = async (postId, commentContent) => {
-    //     try {
-         
-    //       console.log('Comment Content:', commentContent)
-    //       console.log('Current User Name:', currentUser?.name)
-    //       const token = localStorage.getItem('jwt')
-    //       const commentData = {
-    //         content: commentContent
-    //       }
-    //       console.log(postId, "lol")
-    //       await axios.post(
-    //         `http://localhost:8000/api-v1/home/${postId._id}/comments`,commentData,
-    //         {
-    //           headers: {
-    //             Authorization: token,
-    //           },
-    //         }
-    //       )
-    //       await fetchPosts()
-    //     } catch (error) {
-    //       console.log(error)
-    //     }
-    //   }
 
   return (
     <div className="bg-gradient-to-b from-blue-200 to-purple-200 min-h-screen flex flex-col items-center">

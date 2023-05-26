@@ -89,42 +89,44 @@ Stretch Goal User Stories:
 
 Schedule
 Day 1: Learning and Set Up
-    - Set up development environment (install necessary tools and dependencies).
-    - Create a new MERN project for app(git repos).
-    - Get familiarized with the project structure.
+- Set up development environment (install necessary tools and dependencies).
+- Create a new MERN project for app(git repos).
+- Get familiarized with the project structure.
 
 Day 2: User Authentication and Profile
-    - Implement user registration and login functionality.
-    - Create user profiles with basic information (name, profile picture?).
+- Implement user registration and login functionality.
+- Create user profiles with basic information (name, profile picture?).
 
 Day 3: Festival Listings and Recommendations
-    - Integrate an API (such as Songkick or Ticketmaster) to fetch festival event data.
-    - Display a list of upcoming festivals with relevant details (date, location, lineup).
-    -Implement a recommendation system using the ChatGPT API to suggest festivals based on user preferences (music genre).
+- Integrate an API (such as Songkick or Ticketmaster) to fetch festival event data.
+- Display a list of upcoming festivals with relevant details (date, location, lineup).
+- Implement a recommendation system using the ChatGPT API to suggest festivals based on user preferences (music genre).
 
 Day 4: Social Features and Tailwind CSS
-    - Implement a feed or timeline where users can post and share content related to festivals.
-    - Enable users to comment on posts from other users.
-    - Implement basic CRUD functionality for posts.
-    - Learn Tailwind CSS (tutorials, documentation, online resources) to understand its usage.
+- Implement a feed or timeline where users can post and share content related to festivals.
+- Enable users to comment on posts from other users.
+- Implement basic CRUD functionality for posts.
+- Learn Tailwind CSS (tutorials, documentation, online resources) to understand its usage.
 
 Day 5: User Interactions and Tailwind CSS Integration
-    - Incorporate Tailwind CSS into your project, applying its utility classes to enhance the visuals and responsiveness.
+- Incorporate Tailwind CSS into your project, applying its utility classes to enhance the visuals and responsiveness.
 
 Day 6: Cleaning and Testing  
-    -Refine the user interface and improve the app's visual appeal.
-    -Perform testing and bug fixing.
-    -Prepare and finalize MVP.
+
+- Refine the user interface and improve the app's visual appeal.
+- Perform testing and bug fixing.
+- Prepare and finalize MVP.
 
 
 Future:
-    - Enable users to discover and join groups or communities centered around specific festivals or interests.
-    - Implement a messaging system or chat feature for direct communication between users.
-    - Enable users to like posts and/or comments.
-    - Add profile customization such as profile picture, edit password, or emai.
-    - Add a faves festival for users.
-    - Allow users to follow or connect with other festival-goers.
-    - Geolocation
+
+- Enable users to discover and join groups or communities centered around specific festivals or interests.
+- Implement a messaging system or chat feature for direct communication between users.
+- Enable users to like posts and/or comments.
+- Add profile customization such as profile picture, edit password, or emai.
+- Add a faves festival for users.
+- Allow users to follow or connect with other festival-goers.
+- Geolocation
 
 Potential Roadblocks
 - Allowing posts to have likes and comments may be a potential roadblock.
