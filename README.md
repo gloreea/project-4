@@ -2,7 +2,7 @@
 
 Overview
 ________________
-Vibefest is a unique social media platform designed exclusively for festival goers. With its integration of ChatGPT, the app provides personalized recommendations and suggestions to enhance the festival experience for users. Whether they're seeking information about upcoming festivals, connecting with fellow festival goers, or exploring new music genres, Festival Connect offers a seamless and engaging platform for the festival community.
+Vibefest is a unique social media platform designed exclusively for festival goers. With its integration of ChatGPT, the app provides personalized recommendations and suggestions to enhance the festival experience for users. Whether they're seeking information about upcoming festivals, connecting with fellow festival goers, or exploring new music genres, Vibefest offers a seamless and engaging platform for the festival community.
 
 Technologies Used
 _________________
